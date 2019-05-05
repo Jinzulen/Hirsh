@@ -1,6 +1,6 @@
 {
   "name": "hirsh",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Automate the process of logging leaving users' roles and granting them back upon rejoin on a Discord server.",
   "main": "index.js",
   "keywords": [
