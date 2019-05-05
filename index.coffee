@@ -25,6 +25,14 @@ Database = new SQLite.Database dbLocation, (Error) ->
     console.log Colors.bold.green "# [Hirsh: DB] Successfully connected to SQLite database."
 
 # Discord Operations
+Client.on "warn", (E) -> console.warn Colors.bold.blue E
+
+Client.on "error", (E) -> console.error Colors.bold.red E
+
+Client.on "debug", (E) ->
+    if Configuration.Application.APP_DEBUG == "on"
+        console.info Colors.bold.yellow E
+
 Client.on "ready", () ->
     console.log Colors.bold.green "# [Hirsh: User] Successfully logged in using " + Client.user.username + "#" + Client.user.discriminator
 
