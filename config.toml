@@ -1,0 +1,15 @@
+[Application]
+# Whether to log general debugging information or not.
+APP_DEBUG = "off"
+
+# The bot Hirsh will use to perform all of its duties.
+BOT_TOKEN = ""
+
+[Moderation]
+# You can choose to enable (on) or disable (off) this feature depending on
+# whether you wish for Hirsh to keep moderation logs.
+LOGS_STATUS = "on"
+
+# If moderation logs are enabled, this will serve as the channel
+# in which Hirsh keeps all of its logs. Enter a channel ID here.
+LOGS_CHANNEL = ""
