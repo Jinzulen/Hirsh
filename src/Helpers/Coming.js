@@ -47,7 +47,7 @@ module.exports = function (Hirsh, Member, Database)
                             .setTitle("Successfully Assigned")
                             .setThumbnail(Member.user.avatarURL)
                             .setAuthor(Member.guild.client.user.username, Member.guild.client.user.avatarURL)
-                            .setDescription(`I have successfully re-assigned **${Flairs.length}** roles to **${Member.user.username}#${Member.user.discriminator}** and deleted their previous save.`)).catch(console.error);
+                            .setDescription(`I have successfully re-assigned **${Flairs.length - 1}** roles to **${Member.user.username}#${Member.user.discriminator}** and deleted their previous save.`)).catch(console.error);
                         }
                     }
                 }
