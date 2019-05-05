@@ -13,6 +13,7 @@ module.exports = class setLogsCommand extends Command
     constructor (client)
     {
         super(client, {
+            guildOnly: true,
             name: "set-logs",
             aliases: ["mod-logs"],
             group: "configuration",
