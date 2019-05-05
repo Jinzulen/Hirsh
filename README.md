@@ -1,10 +1,16 @@
 # Hirsh
+[![Build Status](https://travis-ci.com/Jinzulen/Hirsh.svg?token=MXEtiSKq3cqJjx1QL5pr&branch=master)](https://travis-ci.com/Jinzulen/Hirsh) [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FJinzulen%2FHirsh.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FJinzulen%2FHirsh?ref=badge_shield)
+
 The best solution to get rid of the stress and strain of manually giving users back their roles, with minimal configuration requirements and an easy setup process, you'll enjoy the full benefits of task automation in no time.
 
 ## FAQ
 > So where can I invite this bot?
 
 Hirsh is a self-hosted bot, meaning you have to download and set it up yourself and then invite it to your own server(s).
+
+> Do I really have to manually edit some config file to setup Hirsh?
+
+No. Hirsh also comes with a commands module - courtesy of Commando - that allows you an easy configuration process right from the comfort of your Discord client. Simply use the command `h.help` after launching Hirsh and you will be prompted with an easy-to-follow commands manual.
 
 > Hirsh is unable to add some roles?
 
@@ -17,3 +23,4 @@ Hirsh is a self-hosted bot, meaning you have to download and set it up yourself 
 
 ## License
 This tool is licensed under the MIT license. See the [LICENSE](https://github.com/Jinzulen/Hirsh/blob/master/LICENSE.md) file for more information.
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FJinzulen%2FHirsh.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FJinzulen%2FHirsh?ref=badge_large)
