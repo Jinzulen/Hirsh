@@ -1,5 +1,5 @@
 # Hirsh
-[![Build Status](https://travis-ci.com/Jinzulen/Hirsh.svg?token=MXEtiSKq3cqJjx1QL5pr&branch=master)](https://travis-ci.com/Jinzulen/Hirsh) [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FJinzulen%2FHirsh.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FJinzulen%2FHirsh?ref=badge_shield)
+[![Build Status](https://scrutinizer-ci.com/g/Jinzulen/Hirsh/badges/build.png?b=master)](https://scrutinizer-ci.com/g/Jinzulen/Hirsh/build-status/master) [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FJinzulen%2FHirsh.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FJinzulen%2FHirsh?ref=badge_shield) [![CodeFactor](https://www.codefactor.io/repository/github/jinzulen/hirsh/badge)](https://www.codefactor.io/repository/github/jinzulen/hirsh) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Jinzulen/Hirsh/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/Jinzulen/Hirsh/?branch=master) [![Known Vulnerabilities](https://snyk.io/test/github/Jinzulen/Hirsh/badge.svg?targetFile=package.json)](https://snyk.io/test/github/Jinzulen/Hirsh?targetFile=package.json)
 
 [![https://nodei.co/npm/hirsh.png](https://nodei.co/npm/hirsh.png)](https://www.npmjs.com/package/hirsh)
 
