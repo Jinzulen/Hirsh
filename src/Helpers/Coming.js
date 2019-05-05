@@ -2,12 +2,13 @@
  * @author Jinzulen
  * @license MIT License
  * @copyright Copyright (C) 2019 Jinzulen <root@jinzulen.xyz>
- * @description Automate the process of logging leaving users' roles and granting them back upon rejoin on a Discord server.
+ * @description Automate the process of logging leaving users' roles and manually assigning them back upon rejoin on a Discord server.
  */
 
 const Colors = require ("colors");
+const { RichEmbed } = require ("discord.js");
 
-module.exports = function (Member, Database)
+module.exports = function (Hirsh, Member, Database)
 {
     try
     {
@@ -32,7 +33,21 @@ module.exports = function (Member, Database)
                     }
                 }
 
-                // TO-DO: MOD LOGS (ONCE COMMANDO SETTINGS ARE SORTED OUT).
+                // Mod Log
+                if (Hirsh.provider.get(Member.guild.id, "mod-logs") !== null)
+                {
+                    if (Hirsh.provider.get(Member.guild.id, "alert-rejoin") !== "off")
+                    {
+                        const Channel = Hirsh.provider.get(Member.guild.id, "mod-logs");
+
+                        Member.guild.channels.find("id", Channel).send(new RichEmbed()
+                        .setColor("#ff9900")
+                        .setTitle("Successfully Assigned")
+                        .setThumbnail(Member.user.avatarURL)
+                        .setAuthor(Member.guild.client.user.username, Member.guild.client.user.avatarURL)
+                        .setDescription(`I have successfully re-assigned **${Flairs.length}** roles to **${Member.user.username}#${Member.user.discriminator}** and deleted their previous save.`)).catch(console.error);
+                    }
+                }
 
                 // Delete
                 Database.run("DELETE FROM hirsh_logs WHERE user_id = ?", Member.id, (Error) => {
@@ -41,7 +56,6 @@ module.exports = function (Member, Database)
                         throw (Error);
                     }
 
-                    // TO-DO: Record in database instead of logging to console.
                     console.log (Colors.bold.blue (`# [Hirsh: Service] Deleted record for: ${Member.user.username}#${Member.user.discriminator}`));
                 });
             }
