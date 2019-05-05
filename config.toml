@@ -13,3 +13,7 @@ LOGS_STATUS = "on"
 # If moderation logs are enabled, this will serve as the channel
 # in which Hirsh keeps all of its logs. Enter a channel ID here.
 LOGS_CHANNEL = ""
+
+[Roles]
+# If you have any roles you'd like Hirsh to ignore when users leave/rejoin, add their IDs here.
+IGNORED = [""]
