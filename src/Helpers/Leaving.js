@@ -36,7 +36,7 @@ module.exports = function (Hirsh, Member, Database)
                             .setTitle("Successfully Documented")
                             .setThumbnail(Member.user.avatarURL)
                             .setAuthor(Member.guild.client.user.username, Member.guild.client.user.avatarURL)
-                            .setDescription(`I have saved **${Data.length - 1}** roles belonging to **${Member.user.username}#${Member.user.discriminator}** and I stand ready to re-assign them upon rejoin.`)).catch(console.error);
+                            .setDescription(`I have saved all of **${Member.user.username}#${Member.user.discriminator}**'s roles and I stand ready to re-assign them upon rejoin.`)).catch(console.error);
                         }
                     }
                 }
