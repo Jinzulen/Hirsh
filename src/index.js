@@ -8,6 +8,7 @@
 const Path = require("path");
 const Colors = require("colors");
 const SQLite = require ("sqlite");
+const SQLite3 = require ("sqlite3");
 const Commando = require ("discord.js-commando");
 
 module.exports = function (Configuration)
@@ -35,13 +36,51 @@ module.exports = function (Configuration)
         unknownCommandResponse: false
     });
 
+    const Database = new SQLite3.Database(Path.join(__dirname, "../Hirsh.db"), (Error) => {
+        if (Error)
+        {
+            console.error (Colors.bold.red (Error.message));
+            process.exist (1);
+        }
+    });
+
     // Commando server settings database.
-    Hirsh.setProvider(SQLite.open(Path.join(__dirname, "Hirsh.db")).then(db => new Commando.SQLiteProvider(db))).catch(console.error);
+    Hirsh.setProvider(SQLite.open(Path.join(__dirname, "../Hirsh.db")).then(db => new Commando.SQLiteProvider(db))).catch(console.error);
 
     Hirsh.on("ready", () => {
-        console.log (Colors.bold.green(`# [Hirsh: Service] Started listening using: ${Hirsh.user.username}#${Hirsh.user.discriminator}.\n`));
+        if (Hirsh.provider.init(Hirsh))
+        {
+            console.log (Colors.bold.green ("# [Hirsh: DB] SQLite module initialized."));
+        }
+
+        console.log (Colors.bold.green (`# [Hirsh: Service] Started listening using: ${Hirsh.user.username}#${Hirsh.user.discriminator}.\n`));
+    });
+
+    Hirsh.on("commandError", (Command, Error) => {
+        if (Error instanceof Client.FriendlyError) return;
+
+        return console.error (Colors.bold.red (`# [Hirsh: Commands] Error in ${Command.groupID}:${Command.memberName}`, Error.message));
+    });
+
+    Hirsh.registry.registerGroups([
+        ["configuration", "Commands respective to Hirsh's configuration."]
+    ]).registerDefaultTypes().registerCommandsIn(Path.join(__dirname, "Commands/"));
+
+    // Listen for incoming users.
+    Hirsh.on("guildMemberAdd", (Member) => {
+        return require ("./Helpers/Coming") (Member, Database);
+    });
+
+    // Listen for leavers.
+    Hirsh.on("guildMemberRemove", (Member) => {
+        return require ("./Helpers/Leaving") (Member, Database);
     });
 
     // Authenticate Hirsh.
-    Hirsh.login (Parent.token);
+    if (Parent.token)
+    {
+        Hirsh.login (Parent.token);
+    } else {
+        console.error (Colors.bold.red ("# [Hirsh: Service] Cannot launch Hirsh due to a missing bot token."));
+    }
 }
