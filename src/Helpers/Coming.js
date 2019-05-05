@@ -38,14 +38,17 @@ module.exports = function (Hirsh, Member, Database)
                 {
                     if (Hirsh.provider.get(Member.guild.id, "alert-rejoin") !== "off")
                     {
-                        const Channel = Hirsh.provider.get(Member.guild.id, "mod-logs");
+                        if (Hirsh.provider.get(Member.guild.id, "mod-logs"))
+                        {
+                            const Channel = Hirsh.provider.get(Member.guild.id, "mod-logs");
 
-                        Member.guild.channels.find("id", Channel).send(new RichEmbed()
-                        .setColor("#ff9900")
-                        .setTitle("Successfully Assigned")
-                        .setThumbnail(Member.user.avatarURL)
-                        .setAuthor(Member.guild.client.user.username, Member.guild.client.user.avatarURL)
-                        .setDescription(`I have successfully re-assigned **${Flairs.length}** roles to **${Member.user.username}#${Member.user.discriminator}** and deleted their previous save.`)).catch(console.error);
+                            Member.guild.channels.find("id", Channel).send(new RichEmbed()
+                            .setColor("#ff9900")
+                            .setTitle("Successfully Assigned")
+                            .setThumbnail(Member.user.avatarURL)
+                            .setAuthor(Member.guild.client.user.username, Member.guild.client.user.avatarURL)
+                            .setDescription(`I have successfully re-assigned **${Flairs.length}** roles to **${Member.user.username}#${Member.user.discriminator}** and deleted their previous save.`)).catch(console.error);
+                        }
                     }
                 }
 
