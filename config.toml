@@ -10,10 +10,14 @@ BOT_TOKEN = ""
 # whether you wish for Hirsh to keep moderation logs.
 LOGS_STATUS = "on"
 
-# If moderation logs are enabled, this will serve as the channel
-# in which Hirsh keeps all of its logs. Enter a channel ID here.
-LOGS_CHANNEL = ""
+# If moderation logs are enabled, this will serve as the channel(s)
+# in which Hirsh keeps all of its logs. Enter channel ID(s) here.
+LOGS_CHANNELS = [""]
 
-[Roles]
+[Ignores]
 # If you have any roles you'd like Hirsh to ignore when users leave/rejoin, add their IDs here.
-IGNORED = [""]
+IGNORED_ROLES = [""]
+
+# If you plan on running Hirsh under a bot that serves multiple servers, you can choose
+# to have it so that Hirsh doesn't execute in certain servers. Enter ID(s) here.
+IGNORED_GUILDS = [""]
