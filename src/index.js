@@ -2,7 +2,7 @@
  * @author Jinzulen
  * @license MIT License
  * @copyright Copyright (C) 2019 Jinzulen <root@jinzulen.xyz>
- * @description Automate the process of logging leaving users' roles and granting them back upon rejoin on a Discord server.
+ * @description Automate the process of logging leaving users' roles and manually assigning them back upon rejoin on a Discord server.
  */
 
 const Path = require("path");
@@ -57,7 +57,7 @@ module.exports = function (Configuration)
     });
 
     Hirsh.on("commandError", (Command, Error) => {
-        if (Error instanceof Client.FriendlyError) return;
+        if (Error instanceof Command.FriendlyError) return;
 
         return console.error (Colors.bold.red (`# [Hirsh: Commands] Error in ${Command.groupID}:${Command.memberName}`, Error.message));
     });
@@ -68,12 +68,12 @@ module.exports = function (Configuration)
 
     // Listen for incoming users.
     Hirsh.on("guildMemberAdd", (Member) => {
-        return require ("./Helpers/Coming") (Member, Database);
+        return require ("./Helpers/Events/Coming") (Hirsh, Member, Database);
     });
 
     // Listen for leavers.
     Hirsh.on("guildMemberRemove", (Member) => {
-        return require ("./Helpers/Leaving") (Member, Database);
+        return require ("./Helpers/Events/Leaving") (Hirsh, Member, Database);
     });
 
     // Authenticate Hirsh.
